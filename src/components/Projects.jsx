@@ -1,72 +1,59 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiGithub, FiExternalLink } from 'react-icons/fi';
-import Section from './Section';
 
 const projects = [
   {
     id: 1,
     title: 'Smart Home IoT System',
-    description: 'A complete IoT-based home automation system with mobile app control, sensor integration, and real-time monitoring.',
-    tech: ['React', 'Node.js', 'Arduino', 'MQTT', 'MongoDB'],
+    description: 'IoT-based home automation with mobile control.',
+    tech: ['React', 'Node.js', 'Arduino'],
     category: 'IoT',
-    github: 'https://github.com/beyond-rda',
-    demo: '#',
-    image: '🏠',
   },
   {
     id: 2,
-    title: 'AI-Powered Chatbot',
-    description: 'An intelligent chatbot powered by machine learning that can answer questions and assist users with various tasks.',
-    tech: ['Python', 'TensorFlow', 'React', 'FastAPI'],
+    title: 'AI Chatbot',
+    description: 'ML-powered chatbot for questions.',
+    tech: ['Python', 'TensorFlow', 'React'],
     category: 'AI',
-    github: 'https://github.com/beyond-rda',
-    demo: '#',
-    image: '🤖',
   },
   {
     id: 3,
-    title: 'Insurance Management System',
-    description: 'A comprehensive web application for managing insurance policies, claims, and client data with dashboard analytics.',
-    tech: ['React', 'Express', 'MySQL', 'Material UI'],
+    title: 'Insurance System',
+    description: 'Policy management with analytics.',
+    tech: ['React', 'Express', 'MySQL'],
     category: 'Frontend',
-    github: 'https://github.com/beyond-rda',
-    demo: '#',
-    image: '📊',
   },
   {
     id: 4,
-    title: 'Portfolio Website',
-    description: 'A modern, responsive personal portfolio showcasing projects, skills, and professional information.',
-    tech: ['React', 'Vite', 'Tailwind CSS', 'Framer Motion'],
+    title: 'Portfolio',
+    description: 'Modern responsive portfolio site.',
+    tech: ['React', 'Vite', 'Tailwind'],
     category: 'Frontend',
-    github: 'https://github.com/beyond-rda',
-    demo: '#',
-    image: '💼',
   },
   {
     id: 5,
-    title: 'Weather Monitoring Station',
-    description: 'IoT-based weather station that collects and displays temperature, humidity, and other weather data in real-time.',
-    tech: ['Arduino', 'ESP8266', 'React', 'IoT'],
+    title: 'Weather Station',
+    description: 'IoT weather data collection.',
+    tech: ['Arduino', 'ESP8266', 'React'],
     category: 'IoT',
-    github: 'https://github.com/beyond-rda',
-    demo: '#',
-    image: '🌤️',
   },
   {
     id: 6,
-    title: 'Image Recognition System',
-    description: 'A deep learning-based image classification system that can identify objects with high accuracy.',
-    tech: ['Python', 'OpenCV', 'Keras', 'React'],
+    title: 'Image Recognition',
+    description: 'Deep learning classification.',
+    tech: ['Python', 'OpenCV', 'Keras'],
     category: 'AI',
-    github: 'https://github.com/beyond-rda',
-    demo: '#',
-    image: '🖼️',
   },
 ];
 
 const categories = ['All', 'Frontend', 'IoT', 'AI'];
+
+const categoryColors = {
+  IoT: 'bg-emerald-500/20 text-emerald-400',
+  AI: 'bg-purple-500/20 text-purple-400',
+  Frontend: 'bg-indigo-500/20 text-indigo-400',
+};
 
 export default function Projects() {
   const [filter, setFilter] = useState('All');
@@ -76,101 +63,77 @@ export default function Projects() {
     : projects.filter(p => p.category === filter);
 
   return (
-    <Section id="projects" className="bg-slate-50 dark:bg-slate-900/50">
-      <div className="container-custom">
+    <section id="projects" className="py-12 px-4">
+      <div className="max-w-3xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-6"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            My <span className="gradient-text">Projects</span>
+          <span className="inline-block px-3 py-1 rounded-full badge text-xs mb-2">Projects</span>
+          <h2 className="text-2xl md:text-3xl font-bold">
+            Featured <span className="gradient-text">Projects</span>
           </h2>
-          <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-            A showcase of my technical projects across different domains
-          </p>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="flex flex-wrap justify-center gap-3 mb-12"
+          className="flex flex-wrap justify-center gap-2 mb-6"
         >
           {categories.map((cat) => (
-            <motion.button
+            <button
               key={cat}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
               onClick={() => setFilter(cat)}
-              className={`px-6 py-2 rounded-full font-medium transition-all ${
+              className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
                 filter === cat
-                  ? 'bg-indigo-600 text-white shadow-lg'
+                  ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white'
                   : 'glass hover:bg-indigo-500/20'
               }`}
             >
               {cat}
-            </motion.button>
+            </button>
           ))}
         </motion.div>
 
-        <motion.div layout className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <AnimatePresence mode="popLayout">
+        <motion.div className="grid gap-3">
+          <AnimatePresence>
             {filteredProjects.map((project) => (
               <motion.div
                 key={project.id}
-                layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.3 }}
-                whileHover={{ y: -5 }}
-                className="glass rounded-2xl overflow-hidden group"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                whileHover={{ scale: 1.01 }}
+                className="glass rounded-xl overflow-hidden"
               >
-                <div className="h-40 bg-gradient-to-br from-indigo-500/20 via-emerald-500/20 to-amber-500/20 flex items-center justify-center text-6xl">
-                  {project.image}
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                      project.category === 'IoT' ? 'bg-emerald-500/20 text-emerald-500' :
-                      project.category === 'AI' ? 'bg-amber-500/20 text-amber-500' :
-                      'bg-indigo-500/20 text-indigo-500'
-                    }`}>
-                      {project.category}
-                    </span>
-                  </div>
-                  <h3 className="text-xl font-bold mb-2 group-hover:text-indigo-500 transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">
-                    {project.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tech.map((tech) => (
-                      <span key={tech} className="px-2 py-1 bg-slate-200 dark:bg-slate-700 rounded text-xs">
-                        {tech}
+                <div className="flex">
+                  <div className={`w-2 ${project.category === 'IoT' ? 'bg-emerald-500' : project.category === 'AI' ? 'bg-purple-500' : 'bg-indigo-500'}`}></div>
+                  <div className="flex-1 p-3">
+                    <div className="flex items-center justify-between mb-1">
+                      <h3 className="font-bold text-sm">{project.title}</h3>
+                      <span className={`px-2 py-0.5 rounded-full text-xs ${categoryColors[project.category]}`}>
+                        {project.category}
                       </span>
-                    ))}
-                  </div>
-                  <div className="flex gap-3">
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-sm font-medium hover:text-indigo-500 transition-colors"
-                    >
-                      <FiGithub className="w-4 h-4" /> GitHub
-                    </a>
-                    <a
-                      href={project.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-sm font-medium hover:text-indigo-500 transition-colors"
-                    >
-                      <FiExternalLink className="w-4 h-4" /> Live Demo
-                    </a>
+                    </div>
+                    <p className="text-xs text-slate-500 mb-2">{project.description}</p>
+                      <div className="flex flex-wrap gap-1 mb-2">
+                      {project.tech.map((tech) => (
+                        <span key={tech} className="px-1.5 py-0.5 bg-slate-100 dark:bg-slate-700 rounded text-xs text-slate-700 dark:text-slate-300">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="flex gap-3 text-xs">
+                      <a href="#" className="flex items-center gap-1 text-indigo-500">
+                        <FiGithub className="w-3 h-3" /> Code
+                      </a>
+                      <a href="#" className="flex items-center gap-1 text-indigo-500">
+                        <FiExternalLink className="w-3 h-3" /> Demo
+                      </a>
+                    </div>
                   </div>
                 </div>
               </motion.div>
@@ -178,6 +141,6 @@ export default function Projects() {
           </AnimatePresence>
         </motion.div>
       </div>
-    </Section>
+    </section>
   );
 }

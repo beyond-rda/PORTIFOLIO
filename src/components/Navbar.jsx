@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiSun, FiMoon, FiMenu, FiX } from 'react-icons/fi';
+import { FiSun, FiMoon, FiMenu, FiX, FiGithub, FiLinkedin } from 'react-icons/fi';
 import { useTheme } from '../context/ThemeContext';
 
 const navItems = [
@@ -36,7 +36,7 @@ export default function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'glass py-3' : 'bg-transparent py-5'
+        scrolled ? 'glass py-3 shadow-lg shadow-indigo-500/10' : 'bg-transparent py-5'
       }`}
     >
       <div className="container-custom flex items-center justify-between">
@@ -62,20 +62,24 @@ export default function Navbar() {
           ))}
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           <motion.button
             whileTap={{ scale: 0.9 }}
             onClick={toggleTheme}
-            className="p-2 rounded-full bg-slate-200 dark:bg-slate-800"
+            className="p-2.5 rounded-xl glass hover:bg-indigo-500/20 transition-colors"
           >
-            {theme === 'dark' ? <FiSun className="w-5 h-5" /> : <FiMoon className="w-5 h-5" />}
+            {theme === 'dark' ? (
+              <FiSun className="w-5 h-5" />
+            ) : (
+              <FiMoon className="w-5 h-5" />
+            )}
           </motion.button>
 
           <button
-            className="md:hidden p-2"
+            className="md:hidden p-2.5 rounded-xl glass"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
-            {mobileMenuOpen ? <FiX className="w-6 h-6" /> : <FiMenu className="w-6 h-6" />}
+            {mobileMenuOpen ? <FiX className="w-5 h-5" /> : <FiMenu className="w-5 h-5" />}
           </button>
         </div>
       </div>
@@ -86,14 +90,14 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass mt-2 mx-4 rounded-xl overflow-hidden"
+            className="md:hidden glass mt-2 mx-4 rounded-2xl overflow-hidden"
           >
             {navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
                 onClick={(e) => { e.preventDefault(); scrollToSection(item.href); }}
-                className="block px-6 py-3 hover:bg-indigo-500/10"
+                className="block px-6 py-3 hover:bg-indigo-500/10 font-medium"
               >
                 {item.name}
               </a>

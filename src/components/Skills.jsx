@@ -1,56 +1,42 @@
 import { motion } from 'framer-motion';
-import Section from './Section';
 
 const skillCategories = [
   {
-    title: 'Programming Languages',
-    skills: [
-      { name: 'JavaScript', level: 85, icon: '🟨' },
-      { name: 'Python', level: 70, icon: '🐍' },
-      { name: 'C/C++', level: 65, icon: '🔧' },
-      { name: 'HTML/CSS', level: 90, icon: '🌐' },
-    ],
+    title: 'Programming',
+    skills: ['JavaScript', 'Python', 'C/C++', 'HTML/CSS'],
+    levels: [85, 70, 65, 90],
   },
   {
-    title: 'Frameworks & Libraries',
-    skills: [
-      { name: 'React', level: 80, icon: '⚛️' },
-      { name: 'Node.js', level: 75, icon: '🟢' },
-      { name: 'Express', level: 70, icon: '🚀' },
-    ],
+    title: 'Frameworks',
+    skills: ['React', 'Node.js', 'Express'],
+    levels: [80, 75, 70],
   },
   {
-    title: 'Tools & Technologies',
-    skills: [
-      { name: 'Git', level: 80, icon: '📚' },
-      { name: 'Docker', level: 60, icon: '🐳' },
-      { name: 'Linux', level: 70, icon: '🐧' },
-      { name: 'Figma', level: 65, icon: '🎨' },
-    ],
+    title: 'Tools',
+    skills: ['Git', 'Docker', 'Linux', 'Figma'],
+    levels: [80, 60, 70, 65],
   },
 ];
 
-const tools = ['VS Code', 'Postman', 'Arduino', 'Raspberry Pi', 'Arduino IDE', 'KiCad', 'Wireshark', 'MySQL'];
+const tools = ['VS Code', 'Postman', 'Arduino', 'Raspberry Pi', 'MySQL'];
 
 export default function Skills() {
   return (
-    <Section id="skills">
-      <div className="container-custom">
+    <section id="skills" className="py-12 px-4">
+      <div className="max-w-3xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-6"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <span className="inline-block px-3 py-1 rounded-full badge text-xs mb-2">Skills</span>
+          <h2 className="text-2xl md:text-3xl font-bold">
             My <span className="gradient-text">Skills</span>
           </h2>
-          <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-            Technologies I work with to build amazing projects
-          </p>
         </motion.div>
 
-        <div className="space-y-8">
+        <div className="space-y-4">
           {skillCategories.map((category, catIndex) => (
             <motion.div
               key={category.title}
@@ -58,37 +44,26 @@ export default function Skills() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: catIndex * 0.1 }}
-              className="glass rounded-2xl p-6 md:p-8"
+              className="glass rounded-xl p-4"
             >
-              <h3 className="text-xl font-semibold mb-6 flex items-center gap-2">
-                <span className="w-2 h-8 bg-indigo-500 rounded-full"></span>
-                {category.title}
-              </h3>
-              <div className="grid md:grid-cols-2 gap-6">
+              <h3 className="font-semibold text-sm mb-3">{category.title}</h3>
+              <div className="space-y-2">
                 {category.skills.map((skill, index) => (
-                  <motion.div
-                    key={skill.name}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: catIndex * 0.1 + index * 0.05 }}
-                  >
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="flex items-center gap-2 font-medium">
-                        <span>{skill.icon}</span> {skill.name}
-                      </span>
-                      <span className="text-sm text-slate-500">{skill.level}%</span>
+                  <div key={skill}>
+                    <div className="flex justify-between text-xs mb-1">
+                      <span>{skill}</span>
+                      <span className="text-indigo-500">{category.levels[index]}%</span>
                     </div>
-                    <div className="h-2 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+                    <div className="h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full">
                       <motion.div
                         initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
+                        whileInView={{ width: `${category.levels[index]}%` }}
                         viewport={{ once: true }}
-                        transition={{ duration: 1, delay: catIndex * 0.1 + index * 0.05 + 0.2 }}
-                        className="h-full bg-gradient-to-r from-indigo-500 via-emerald-500 to-amber-500 rounded-full"
+                        transition={{ duration: 0.6, delay: catIndex * 0.1 + index * 0.1 }}
+                        className="h-full bg-gradient-to-r from-indigo-500 to-emerald-500 rounded-full"
                       />
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
             </motion.div>
@@ -96,13 +71,13 @@ export default function Skills() {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-12"
+          className="mt-6"
         >
-          <h3 className="text-xl font-semibold mb-6 text-center">Tools I Use</h3>
-          <div className="flex flex-wrap justify-center gap-3">
+          <h4 className="text-sm font-semibold mb-3 text-center">Tools</h4>
+          <div className="flex flex-wrap justify-center gap-2">
             {tools.map((tool, index) => (
               <motion.span
                 key={tool}
@@ -110,7 +85,7 @@ export default function Skills() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                className="px-4 py-2 glass rounded-full text-sm font-medium hover:bg-indigo-500/20 transition-colors cursor-default"
+                className="px-2.5 py-1 glass rounded-full text-xs"
               >
                 {tool}
               </motion.span>
@@ -118,6 +93,6 @@ export default function Skills() {
           </div>
         </motion.div>
       </div>
-    </Section>
+    </section>
   );
 }
