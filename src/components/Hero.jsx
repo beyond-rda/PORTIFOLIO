@@ -38,7 +38,7 @@ export default function Hero() {
             transition={{ delay: 0.2 }}
             className="text-base md:text-lg text-slate-600 dark:text-slate-400 mb-4"
           >
-            <span className="text-indigo-500 font-semibold">IT Student</span> & 
+            <span className="text-indigo-500 font-semibold">IT Student</span> at <span className="text-emerald-500 font-semibold">RP Karongi</span> & 
             {' '}<span className="text-emerald-500 font-semibold">Future IoT & AI Developer</span>
           </motion.h2>
           
