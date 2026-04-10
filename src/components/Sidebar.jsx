@@ -74,7 +74,8 @@ export default function Sidebar({ children }) {
               <img src={profileImg} alt="Muhire Jackson" className="w-full h-full object-contain" />
             </div>
           </div>
-          <h2 className="font-bold text-lg gradient-text">Muhire Jackson</h2>
+          <h2 className="font-bold text-lg gradient-text">BMuhire</h2>
+          <p className="text-sm text-slate-500 dark:text-slate-400">Muhire Jackson</p>
           <p className="text-sm text-slate-500 dark:text-slate-400">Studying at RP Karongi</p>
           <p className="text-xs text-indigo-500 mt-1">Future IoT & AI Developer</p>
         </div>
