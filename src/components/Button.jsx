@@ -6,8 +6,8 @@ export default function Button({ children, onClick, variant = 'primary', classNa
   const variants = {
     primary: 'bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40',
     secondary: 'bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white shadow-lg shadow-emerald-500/25',
-    outline: 'border-2 border-indigo-500 text-indigo-500 hover:bg-indigo-500 hover:text-white',
-    ghost: 'text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800',
+    outline: 'border-2 border-indigo-500 text-indigo-500 hover:bg-indigo-500 hover:text-white bg-white/50 dark:bg-transparent',
+    ghost: 'text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 bg-white/50 dark:bg-transparent',
   };
 
   return (

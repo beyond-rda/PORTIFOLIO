@@ -5,7 +5,7 @@ import { FiMail, FiPhone, FiGithub, FiLinkedin, FiInstagram, FiSend, FiCheck, Fi
 const socialLinks = [
   { icon: FiGithub, href: 'https://github.com/beyond-rda', label: 'GitHub' },
   { icon: FiLinkedin, href: 'https://linkedin.com/in/jacksonmuhire', label: 'LinkedIn' },
-  { icon: FiInstagram, href: 'https://instagram.com/b_muhire', label: 'Instagram' },
+  { icon: FiInstagram, href: 'https://instagram.com/b__muhire', label: 'Instagram' },
 ];
 
 const contactInfo = [
@@ -66,11 +66,10 @@ export default function Contact() {
                 transition={{ delay: index * 0.1 }}
                 className="flex items-center gap-3 glass px-4 py-3 rounded-xl hover:bg-indigo-500/10 transition-colors"
               >
-                <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${
-                  index === 0 ? 'bg-gradient-to-br from-indigo-500 to-purple-500' :
-                  index === 1 ? 'bg-gradient-to-br from-emerald-500 to-teal-500' :
-                  'bg-gradient-to-br from-amber-500 to-orange-500'
-                }`}>
+                <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${index === 0 ? 'bg-gradient-to-br from-indigo-500 to-purple-500' :
+                    index === 1 ? 'bg-gradient-to-br from-emerald-500 to-teal-500' :
+                      'bg-gradient-to-br from-amber-500 to-orange-500'
+                  }`}>
                   <info.icon className="w-5 h-5 text-white" />
                 </div>
                 <div className="text-left">

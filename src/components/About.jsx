@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import profileImg from '../assets/bm.jpeg';
+import profileImg from '../assets/new.jpeg';
 
 const stats = [
   { value: '2+', label: 'Years Learning' },
@@ -31,12 +31,13 @@ export default function About() {
             viewport={{ once: true }}
             className="shrink-0"
           >
-            <div className="w-32 h-32 md:w-40 md:h-40 relative">
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-indigo-500 via-purple-500 to-emerald-500 animate-pulse"></div>
-              <div className="relative w-full h-full rounded-2xl overflow-hidden border-2 border-slate-900 dark:border-white">
-                <img src={profileImg} alt="Muhire Jackson" className="w-full h-full object-cover" />
-              </div>
+            <div className="relative w-40 h-40 md:w-48 md:h-48">
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-indigo-500 via-purple-500 to-emerald-500 blur-md opacity-50"></div>
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-indigo-500 via-purple-500 to-emerald-500"></div>
+            <div className="absolute inset-0.5 md:inset-1 rounded-xl overflow-hidden border border-white/30">
+              <img src={profileImg} alt="Muhire Jackson" className="w-full h-full object-contain" />
             </div>
+          </div>
           </motion.div>
 
           <motion.div

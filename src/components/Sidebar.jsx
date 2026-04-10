@@ -2,10 +2,9 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   FiHome, FiUser, FiCode, FiFolder, FiBriefcase, FiMail, 
-  FiSun, FiMoon, FiMenu, FiX, FiGithub, FiLinkedin, FiInstagram 
+  FiMenu, FiX, FiGithub, FiLinkedin, FiInstagram 
 } from 'react-icons/fi';
-import { useTheme } from '../context/ThemeContext';
-import profileImg from '../assets/bm.jpeg';
+import profileImg from '../assets/new.jpeg';
 
 const navItems = [
   { name: 'Home', href: '#home', icon: FiHome },
@@ -23,7 +22,6 @@ const socialLinks = [
 ];
 
 export default function Sidebar({ children }) {
-  const { theme, toggleTheme } = useTheme();
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const scrollToSection = (href) => {
@@ -41,7 +39,7 @@ export default function Sidebar({ children }) {
         className="mobile-toggle"
         onClick={() => setMobileOpen(!mobileOpen)}
       >
-        {mobileOpen ? <FiX className="w-5 h-5 text-white" /> : <FiMenu className="w-5 h-5 text-white" />}
+        {mobileOpen ? <FiX className="w-5 h-5" /> : <FiMenu className="w-5 h-5" />}
       </button>
 
       {/* Mobile Overlay */}
@@ -58,21 +56,22 @@ export default function Sidebar({ children }) {
       </AnimatePresence>
 
       {/* Sidebar */}
-      <aside className={`sidebar dark:bg-slate-900 bg-white border-r border-slate-200 dark:border-slate-800 ${mobileOpen ? 'mobile-open' : ''}`}>
+      <aside className={`sidebar bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 ${mobileOpen ? 'mobile-open' : ''}`}>
         {/* Close Button for Mobile */}
         <button
           className="md:hidden absolute top-4 right-4 p-2"
           onClick={() => setMobileOpen(false)}
         >
-          <FiX className="w-5 h-5 text-white" />
+          <FiX className="w-5 h-5" />
         </button>
 
         {/* Profile Section */}
         <div className="p-6 text-center border-b border-slate-200 dark:border-slate-800">
-          <div className="relative w-24 h-24 mx-auto mb-4">
-            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-indigo-500 via-purple-500 to-emerald-500 animate-pulse"></div>
-            <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-slate-900 dark:border-white">
-              <img src={profileImg} alt="Muhire Jackson" className="w-full h-full object-cover" />
+          <div className="relative w-32 h-32 mx-auto mb-4">
+            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-indigo-500 via-purple-500 to-emerald-500 blur-sm opacity-70"></div>
+            <div className="absolute inset-0.5 rounded-full bg-gradient-to-br from-indigo-500 via-purple-500 to-emerald-500"></div>
+            <div className="absolute inset-0.5 rounded-full overflow-hidden border-2 border-white/50">
+              <img src={profileImg} alt="Muhire Jackson" className="w-full h-full object-contain" />
             </div>
           </div>
           <h2 className="font-bold text-lg gradient-text">Muhire Jackson</h2>
@@ -94,17 +93,6 @@ export default function Sidebar({ children }) {
             </a>
           ))}
         </nav>
-
-        {/* Theme Toggle */}
-        <div className="p-4 border-t border-slate-200 dark:border-slate-800">
-          <button
-            onClick={toggleTheme}
-            className="w-full flex items-center justify-center gap-2 p-3 rounded-xl glass hover:bg-indigo-500/20 transition-colors"
-          >
-            {theme === 'dark' ? <FiSun className="w-5 h-5" /> : <FiMoon className="w-5 h-5" />}
-            <span className="text-sm font-medium">{theme === 'dark' ? 'Light Mode' : 'Dark Mode'}</span>
-          </button>
-        </div>
 
         {/* Social Links */}
         <div className="p-4 border-t border-slate-200 dark:border-slate-800">
