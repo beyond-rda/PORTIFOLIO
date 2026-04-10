@@ -7,6 +7,7 @@ import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Experience from './components/Experience';
 import Contact from './components/Contact';
+import { Analytics } from "@vercel/analytics/react"
 
 function AppContent() {
   const { theme } = useTheme();
@@ -29,6 +30,7 @@ function App() {
   return (
     <ThemeProvider>
       <AppContent />
+      <Analytics />
     </ThemeProvider>
   );
 }
