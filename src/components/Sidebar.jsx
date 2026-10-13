@@ -18,7 +18,7 @@ const navItems = [
 const socialLinks = [
   { icon: FiGithub, href: 'https://github.com/beyond-rda', label: 'GitHub' },
   { icon: FiLinkedin, href: 'https://linkedin.com/in/jacksonmuhire', label: 'LinkedIn' },
-  { icon: FiInstagram, href: 'https://instagram.com/b_muhire', label: 'Instagram' },
+  { icon: FiInstagram, href: 'https://instagram.com/b__muhire', label: 'Instagram' },
 ];
 
 export default function Sidebar({ children }) {
